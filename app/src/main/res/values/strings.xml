@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">سامانه هوشمند کاویان</string>
+    <string name="splash_subtitle">پرتال معاملاتی و کپی‌ترید هوشمند</string>
+    <string name="offline_title">عدم اتصال به سرور</string>
+    <string name="offline_desc">لطفاً اتصال اینترنت خود را بررسی کنید و دوباره تلاش نمایید.</string>
+    <string name="btn_retry">تلاش مجدد</string>
+    <string name="exit_confirm">برای خروج دوباره دکمه بازگشت را بزنید</string>
+    <string name="bio_title">احراز هویت امنیتی</string>
+    <string name="bio_subtitle">برای ورود به سامانه هوشمند کاویان هویت خود را تأیید کنید</string>
+    <string name="bio_locked_title">برنامه قفل است</string>
+    <string name="bio_unlock_btn">باز کردن قفل</string>
+</resources>

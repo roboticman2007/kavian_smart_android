@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.KavianSmart" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/kavian_accent</item>
+        <item name="colorPrimaryVariant">@color/kavian_surface</item>
+        <item name="colorOnPrimary">@color/kavian_accent_fg</item>
+        <item name="colorSecondary">@color/kavian_green</item>
+        <item name="android:windowBackground">@color/kavian_bg</item>
+        <item name="android:statusBarColor">@color/kavian_bg</item>
+        <item name="android:navigationBarColor">@color/kavian_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

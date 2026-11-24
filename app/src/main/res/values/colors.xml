@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kavian_bg">#060911</color>
+    <color name="kavian_surface">#0F1727</color>
+    <color name="kavian_accent">#F0B90B</color>
+    <color name="kavian_accent_fg">#0B0F17</color>
+    <color name="kavian_text">#EEF2F7</color>
+    <color name="kavian_muted">#8B9BB4</color>
+    <color name="kavian_green">#00D084</color>
+    <color name="kavian_red">#F23645</color>
+</resources>
