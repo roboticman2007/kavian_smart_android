@@ -23,21 +23,32 @@ jobs:
         with:
           gradle-version: '8.7'
 
-      - name: Decode Release Keystore (optional)
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
-        run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/kavian-release.jks
-
       - name: Build Installable APK
         env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_BASE64 != '' && 'kavian-release.jks' || '' }}
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
+          PROJ_DIR=$(dirname "$(find . -maxdepth 3 -name 'settings.gradle.kts' | head -n 1)")
+          if [ -z "$PROJ_DIR" ]; then
+            echo "ERROR: settings.gradle.kts not found in repository!"
+            ls -la
+            exit 1
+          fi
+          echo "Building Android project in: $PROJ_DIR"
+          cd "$PROJ_DIR"
+
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > app/kavian-release.jks
+            export KEYSTORE_FILE="kavian-release.jks"
+          else
+            export KEYSTORE_FILE=""
+          fi
+
           gradle assembleRelease --no-daemon
           APK_SRC=$(ls app/build/outputs/apk/release/*.apk | head -n 1)
-          cp "$APK_SRC" KavianSmart-v1.0.apk
+          cp "$APK_SRC" "$GITHUB_WORKSPACE/KavianSmart-v1.0.apk"
 
       - name: Upload Ready-to-Install APK Artifact
         uses: actions/upload-artifact@v4
